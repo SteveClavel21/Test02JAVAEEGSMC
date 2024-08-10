@@ -13,7 +13,7 @@ public class detalleordengsmcService {
     @Autowired
     private detalleordengsmcRepository detalleordengsmcRepository;
 
-    public List<detalleordengsmc> listarTodas() {
+    public List<detalleordengsmc> listarTodos() {
         return detalleordengsmcRepository.findAll();
     }
 

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulario de detalles</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+<h1 class="text-center mb-5 mt-3" th:text="${detalle.id == null} ? 'Nuevo detalles' : 'Editar Detalles'"></h1>
+
+<div class="d-flex justify-content-center align-items-center   " >
+    <div class=" justify-content-center align-items-center">
+
+        <form class="mt-3" th:action="@{/detalles}" th:object="${detalle}" method="post">
+            <input type="hidden" th:field="*{id}" />
+            <label class="mx-3">Cantidad:</label>
+            <input class="form-control w-50 mx-3" type="number" th:field="*{cantidadgsmc}" />
+            <label class="mx-3" for="">Precio</label>
+            <input class="form-control w-50 mx-3" type="number" th:field="*{preciogsmc}" />
+            <label class="mx-3" for="">Orden</label>
+            <select class="form-control w-50 mx-3" th:field="*{ordengsmc.id}">
+                <option th:each="orden : ${ordenes}"
+                        th:value="${orden.id}"
+                        th:text="${orden.fechagsmc}"></option>
+            </select>
+            <label class="mx-3" for="">Producto</label>
+            <select class="form-control w-50 mx-3" th:field="*{productogsmc.id}">
+                <option th:each="producto : ${productos}"
+                        th:value="${producto.id}"
+                        th:text="${producto.nombregsmc}"></option>
+            </select>
+            <br>
+            <button class="btn btn-primary mx-3" type="submit">Guardar</button>
+        </form>
+        <br>
+        <a class="btn btn-info mx-3 mb-3" href="/detalles">Volver a la lista</a>
+    </div>
+</div>
+
+</body>
+</html>
